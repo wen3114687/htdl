@@ -12,13 +12,13 @@ import com.cw.dao.UserDao;
 import com.cw.service.DeptService;
 import com.cw.service.UserService;
 @Service
+@Transactional
 public class DeptServiceImp implements DeptService {
 
 	@Resource
 	DeptDao deptDao;
 	
-	@Override
-	@Transactional
+
 	public void save(Department department) {
 		deptDao.save(department);
 		

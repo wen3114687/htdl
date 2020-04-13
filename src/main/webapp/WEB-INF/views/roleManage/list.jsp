@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<jsp:include page="../common_js.jsp"></jsp:include>
+<jsp:include page="../common/common_js.jsp"></jsp:include>
 <script type="text/javascript">
 
 $(function(){

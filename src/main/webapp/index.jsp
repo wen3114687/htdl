@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<form action="login">
+	<form action="userManage/login">
 	<label accesskey="loginname">登录名：</label>
 		<input type="text" name="loginname"><br>
 		

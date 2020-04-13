@@ -11,6 +11,7 @@ import com.cw.bean.User;
 import com.cw.service.UserService;
 
 @Controller
+@RequestMapping("/userManage")
 public class UserController {
 	
 	@Resource
@@ -27,7 +28,7 @@ public class UserController {
 	@RequestMapping(value="/login")
 	public ModelAndView  login(@ModelAttribute User user) {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("success");
+		modelAndView.setViewName("system/main");
 		return modelAndView;
 	}
 }

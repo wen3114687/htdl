@@ -23,7 +23,7 @@ public class RoleController {
 	@RequestMapping(value="/list",method = RequestMethod.GET)
 	public String list(Map<String, Object> map) {
 		map.put("rolelist", roleService.getAll());
-		return "common/RoleManage/list";
+		return "roleManage/list";
 	}
 	
 	@RequestMapping(value="/list/{id}",method = RequestMethod.DELETE)

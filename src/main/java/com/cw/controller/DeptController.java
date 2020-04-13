@@ -13,17 +13,18 @@ import com.cw.service.DeptService;
 import com.cw.service.UserService;
 
 @Controller
+@RequestMapping("/depManage")
 public class DeptController {
 	
 	@Resource
 	DeptService deptService;
 	
-	@RequestMapping(value="/saveUser")
+	@RequestMapping(value="/saveDept")
 	public ModelAndView  saveUser(@ModelAttribute Department department) {
 		ModelAndView modelAndView = new ModelAndView();
 		deptService.save(department);
 		modelAndView.setViewName("success");
-		return  new ModelAndView("redirect:/roleManage/list");;
+		return  new ModelAndView("redirect:/roleManage/list");
 	}
 	
 

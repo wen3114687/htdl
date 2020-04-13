@@ -13,12 +13,13 @@ import com.cw.dao.RoleDao;
 import com.cw.service.RoleService;
 
 @Service
+@Transactional
 public class RoleServiceImp implements RoleService{
 	
 	@Resource
 	RoleDao roleDao;
 	
-	@Transactional
+	
 	public void save(Role role) {
 		roleDao.save(role);
 	}
