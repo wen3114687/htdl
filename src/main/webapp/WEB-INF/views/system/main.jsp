@@ -34,7 +34,7 @@
 	</div>
 	<div data-options="region:'center'" style="background: #eee;"
 		class="easyui-tabs">
-		<div title="欢迎页" style="padding: 20px; display: none;">tab1</div>
+		<div title="欢迎页" style="padding: 20px; display: none;">欢迎访问</div>
 		<div title="Tab2" data-options="closable:true"
 			style="overflow: auto; padding: 20px; display: none;">tab2</div>
 		<div title="Tab3" data-options="iconCls:'icon-reload',closable:true"
