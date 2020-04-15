@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cw.service.FunctionService;
-import com.cw.service.RoleService;
 
 @Controller
 @RequestMapping("/functionManage")
@@ -29,7 +28,7 @@ public class FunctionController {
 	
 	@RequestMapping(value="/list/{id}",method = RequestMethod.DELETE)
 	@ResponseBody
-	public ModelAndView delete(@PathVariable String id) {
+	public ModelAndView delete(@PathVariable Integer id) {
 		functionService.delete(id);
 		return new ModelAndView("redirect:/functionManage/list");
 	}

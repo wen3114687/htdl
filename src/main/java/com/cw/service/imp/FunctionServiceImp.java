@@ -3,11 +3,15 @@ package com.cw.service.imp;
 import java.util.Collection;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
 
 import com.cw.bean.Function;
 import com.cw.dao.FunctionDao;
 import com.cw.service.FunctionService;
-
+@Service
+@Transactional
 public class FunctionServiceImp implements FunctionService {
 
 	@Resource
@@ -20,7 +24,7 @@ public class FunctionServiceImp implements FunctionService {
 	}
 
 	@Override
-	public void delete(String id) {
+	public void delete(Integer id) {
 		functionDao.delete(id);
 
 	}
@@ -39,7 +43,7 @@ public class FunctionServiceImp implements FunctionService {
 	}
 
 	@Override
-	public Function getFunctionById(String id) {
+	public Function getFunctionById(Integer id) {
 		
 		return functionDao.findByid(id);
 	}

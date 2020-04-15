@@ -15,7 +15,7 @@ public class Department {
 	
 	@Id
 	@GeneratedValue
-	private String id;
+	private Integer id;
 	
 	@Column(name = "depname")
 	private String depname;

@@ -1,6 +1,5 @@
 package com.cw.dao;
 
-import java.io.Serializable;
 import java.util.List;
 
 public interface BaseDao <T>{
@@ -11,11 +10,11 @@ public interface BaseDao <T>{
 
     void saveOrUpdate(T entity);
 
-    void delete(String id);
+    void delete(Integer id);
     
-    T findByid(String id);
+    T findByid(Integer id);
     
-    List<T> findByids(String[] ids);
+    List<T> findByids(Integer[] ids);
     
     List<T> findAll();
 

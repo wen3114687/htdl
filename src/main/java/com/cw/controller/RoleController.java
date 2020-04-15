@@ -28,7 +28,7 @@ public class RoleController {
 	
 	@RequestMapping(value="/list/{id}",method = RequestMethod.DELETE)
 	@ResponseBody
-	public ModelAndView delete(@PathVariable String id) {
+	public ModelAndView delete(@PathVariable Integer id) {
 		roleService.delete(id);
 		return new ModelAndView("redirect:/roleManage/list");
 	}

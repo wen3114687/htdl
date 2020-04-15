@@ -1,7 +1,6 @@
 package com.cw.dao.imp;
 
 import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,7 +9,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.cw.dao.BaseDao;
 @Repository
@@ -20,6 +18,7 @@ public abstract  class BaseDaoImp<T> implements BaseDao<T> {
 	SessionFactory sessionFactory;
 	protected Class<T> clazz;
 	
+	@SuppressWarnings("unchecked")
 	public BaseDaoImp() {
 		ParameterizedType pt= (ParameterizedType) this.getClass().getGenericSuperclass();
 		clazz=(Class) pt.getActualTypeArguments()[0];
@@ -44,7 +43,7 @@ public abstract  class BaseDaoImp<T> implements BaseDao<T> {
 		
 	}
 
-	public void delete(String id) {
+	public void delete(Integer id) {
 		Object obj=getSession().get(clazz, id);
 		Session session=sessionFactory.openSession();
 	      session.beginTransaction();
@@ -56,11 +55,12 @@ public abstract  class BaseDaoImp<T> implements BaseDao<T> {
 	}
 
 	@Override
-	public T findByid(String id) {
+	public T findByid(Integer id) {
 		// TODO Auto-generated method stub
 		return (T) getSession().get(clazz, id);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findAll() {
 		return getSession().createCriteria(clazz).list();
@@ -76,7 +76,7 @@ public abstract  class BaseDaoImp<T> implements BaseDao<T> {
 	}
 
 	@Override
-	public List<T> findByids(String[] ids) {
+	public List<T> findByids(Integer[] ids) {
 		getSession().createCriteria(clazz).add(Restrictions.in("id", ids));
 		return null;
 	}

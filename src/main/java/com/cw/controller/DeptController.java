@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cw.bean.Department;
-import com.cw.bean.User;
 import com.cw.service.DeptService;
-import com.cw.service.UserService;
 
 @Controller
 @RequestMapping("/depManage")
