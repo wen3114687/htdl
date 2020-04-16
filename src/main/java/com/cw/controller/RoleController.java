@@ -5,12 +5,14 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cw.bean.Role;
 import com.cw.service.RoleService;
 
 @Controller
@@ -26,10 +28,24 @@ public class RoleController {
 		return "roleManage/list";
 	}
 	
+	@RequestMapping(value="/list/{id}",method = RequestMethod.GET)
+	public ModelAndView findById(@PathVariable Integer id,Map<String, Object> map) {
+		map.put("roleEnitiy", roleService.getRoleById(id));
+		return new ModelAndView("roleManage/list");
+	}
+	
+	
+	@RequestMapping(value="/list",method = RequestMethod.POST)
+	public ModelAndView addRole(@ModelAttribute Role role) {
+		roleService.save(role);
+		return new ModelAndView("redirect:/roleManage/list");
+	}
+	
 	@RequestMapping(value="/list/{id}",method = RequestMethod.DELETE)
 	@ResponseBody
 	public ModelAndView delete(@PathVariable Integer id) {
 		roleService.delete(id);
+		
 		return new ModelAndView("redirect:/roleManage/list");
 	}
 	
