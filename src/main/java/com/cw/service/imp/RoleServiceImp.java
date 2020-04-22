@@ -26,7 +26,6 @@ public class RoleServiceImp implements RoleService{
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
 		roleDao.delete(id);
 	}
 
@@ -38,7 +37,7 @@ public class RoleServiceImp implements RoleService{
 
 	@Override
 	public void update(Role role) {
-		// TODO Auto-generated method stub
+		roleDao.update(role);
 		
 	}
 

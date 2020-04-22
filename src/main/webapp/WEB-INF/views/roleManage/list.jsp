@@ -17,6 +17,9 @@
 			<input type="hidden" name="_method" value="DELETE">
 		</form>
 		
+		<form id="form_update" action="" method="post">
+			<input type="hidden" name="_method" value="DELETE">
+		</form>
 		
 	
 		<table id="rolelist" toolbar="#toolbar" class="easyui-datagrid" title="角色" style="width:700px" pagination="true"
@@ -45,44 +48,50 @@
 			</tbody>
 		</table>
 		  <div id="toolbar">
-		        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">New User</a>
-		        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">Edit User</a>
-		        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">Remove User</a>
+		        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">新建角色</a>
 		  </div>
 		
 		  <div id="dlg" class="easyui-dialog" style="width:400px" data-options="closed:true,modal:true,border:'thin',buttons:'#dlg-buttons'">
-	        <form id="roleForm"  novalidate style="margin:0;padding:20px 50px">
+	        <form id="roleForm" method="POST" novalidate style="margin:0;padding:20px 50px" onsubmit="document.charset='utf-8'">
 	            <h3>权限信息</h3>
 	            <div style="margin-bottom:10px">
-	                <input id="rolename" name="rolename" class="easyui-textbox" required="true" label="名称:" style="width:100%">
+	            	<input id="_method" type="hidden" name="_method">
+	            
+	            	<input id="id" type="hidden" name="id">
+	            	<label for="rolename">Rolname:</label>
+	                <input id="rolename" name="rolename" >
 	            </div>
 	            <div style="margin-bottom:10px">
-	                <input id="manager" class="easyui-radiobutton" name="auth" value="manager" label="类型:">管理员
-	                <input id="emp" class="easyui-radiobutton" name="auth" value="emp" >职员
+	                <label for="auth">auth:</label>
+	                <input id="emp" type="radio" name="auth" value="emp"/>职员
+	                <input id="manager"  type="radio" name="auth" value="manager"/>管理员
 	            </div>
 	            <div style="margin-bottom:10px">
-	                <input id="description" name="description" class="easyui-textbox" required="true" label="描述:" style="width:100%">
+	                <!-- <input id="description" name="description" class="easyui-textbox" required="true" label="描述:" style="width:100%"> -->
+	            	<label for="description">description:</label>
+	            	<input id="description" name="description">
+	            
 	            </div>
 	        </form>
 	    </div>
 	    <div id="dlg-buttons">
-	        <a href="list" class="easyui-linkbutton c6 save" iconCls="icon-ok"  style="width:90px">Save</a>
+	        <button class="easyui-linkbutton c6 save" iconCls="icon-ok" style="width:90px" >Save</button>
 	        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancel</a>
 	    </div>
 		
 		<script type="text/javascript">
 		
 		$(document).ready(function(){
-			
+				
 				$(".edit").click(function(){
 					var colId=$(this).attr("value");
-					$('#dlg').dialog('open').dialog('setTitle','新建');
-					$('#fm').form('clear');
-					
+					$('#dlg').dialog('open').dialog('setTitle','编辑');
+					$('#roleForm').form('clear');
+					$("#_method").val("PUT");
 					$.ajax({
 						type : "GET",
 						contentType: "application/json;charset=UTF-8",
-						url :"edit/"+colId,
+						url :"list/"+colId,
 						success : function(result) {
 							fillText(result);
 			            },
@@ -106,27 +115,31 @@
 				
 				
 				$(".save").click(function(){
-						var href=$(this).attr("href");
-						$("#roleForm").attr("action",href).submit();
+						var url="list";
+						 if($("#id").val()!=""){
+							$("#_method").val("PUT");
+							url=url+"/"+$("#id").val();
+						}
+						$("#roleForm").attr("action",url).submit();
 				});
+				
 		});
 		
 		function fillText(result){
 			for(var key in result.roleEnitiy){
-				$("#"+key).val
-				console.log(key);
+				if(key=="auth"){
+					$('input:radio[name="auth"][value="'+result.roleEnitiy[key]+'"]').prop('checked', true);
+				}else{
+					$("input[name="+key+"]").val(result.roleEnitiy[key]);
+				}
 			}
 		}
 		
 		
 		function newUser(){
 			$('#dlg').dialog('open').dialog('setTitle','新建');
-			$('#fm').form('clear');
-		}
-		
-		function editUser(){
-			$('#dlg').dialog('open').dialog('setTitle','新建');
-			$('#fm').form('clear');
+			$('#roleForm').form('clear');
+			$('input:radio[name="auth"][value="emp"]').prop('checked', true);
 		}
 		
 		
