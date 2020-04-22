@@ -7,29 +7,6 @@
 <meta charset="UTF-8">
 <jsp:include page="../common/common_js.jsp"></jsp:include>
 <script type="text/javascript">
-
-$(function(){
-	$(".delete").click(function(){
-		if(confirm("真的要删除吗?")){
-			var href=$(this).attr("href");
-			$("#form_del").attr("action",href).submit();
-		}
-		return false;	  
-	});
-	
-	
-	$(".save").click(function(){
-			var href=$(this).attr("href");
-			$("#roleForm").attr("action",href).submit();
-	});
-	
-	
-	$(".edit").click(function(){
-		var href=$(this).attr("href");
-		$("#roleForm").attr("action",href).submit();
-});
-	
-})
 	
 
 </script>
@@ -39,7 +16,6 @@ $(function(){
 		<form id="form_del" action="" method="post">
 			<input type="hidden" name="_method" value="DELETE">
 		</form>
-		
 		
 		
 	
@@ -52,7 +28,6 @@ $(function(){
 					<th data-options="field:'auth'">AUTH </th>
 					<th data-options="field:'description'">DESCRIPTION</th>
 					<th data-options="field:'null'">操作</th>
-					
 				</tr>
 			</thead>
 			<tbody>
@@ -62,7 +37,8 @@ $(function(){
 					<td>${role.rolename}</td>
 					<td>${role.auth}</td>
 					<td>${role.description}</td>
-					<td><a href="list/${role.id}" class="edit">编辑</a>&nbsp;<a class="delete" href="list/${role.id}">删除</a></td>
+					<%-- <td><a href="#" value="${role.id}" class="edit">编辑</a>&nbsp;<a class="delete" href="list/${role.id}">删除</a></td> --%>
+					<td><button value="${role.id}" class="edit">编辑</button>&nbsp;<button class="delete" value="${role.id}" >删除</button></td>
 				</tr>
 			
 			</c:forEach>
@@ -75,17 +51,17 @@ $(function(){
 		  </div>
 		
 		  <div id="dlg" class="easyui-dialog" style="width:400px" data-options="closed:true,modal:true,border:'thin',buttons:'#dlg-buttons'">
-	        <form id="roleForm" method="post" novalidate style="margin:0;padding:20px 50px">
+	        <form id="roleForm"  novalidate style="margin:0;padding:20px 50px">
 	            <h3>权限信息</h3>
 	            <div style="margin-bottom:10px">
-	                <input name="rolename" class="easyui-textbox" required="true" label="名称:" style="width:100%">
+	                <input id="rolename" name="rolename" class="easyui-textbox" required="true" label="名称:" style="width:100%">
 	            </div>
 	            <div style="margin-bottom:10px">
-	                <input class="easyui-radiobutton" name="auth" value="manager" label="类型:">管理员
-	                <input class="easyui-radiobutton" name="auth" value="emp" >职员
+	                <input id="manager" class="easyui-radiobutton" name="auth" value="manager" label="类型:">管理员
+	                <input id="emp" class="easyui-radiobutton" name="auth" value="emp" >职员
 	            </div>
 	            <div style="margin-bottom:10px">
-	                <input name="description" class="easyui-textbox" required="true" label="描述:" style="width:100%">
+	                <input id="description" name="description" class="easyui-textbox" required="true" label="描述:" style="width:100%">
 	            </div>
 	        </form>
 	    </div>
@@ -95,6 +71,54 @@ $(function(){
 	    </div>
 		
 		<script type="text/javascript">
+		
+		$(document).ready(function(){
+			
+				$(".edit").click(function(){
+					var colId=$(this).attr("value");
+					$('#dlg').dialog('open').dialog('setTitle','新建');
+					$('#fm').form('clear');
+					
+					$.ajax({
+						type : "GET",
+						contentType: "application/json;charset=UTF-8",
+						url :"edit/"+colId,
+						success : function(result) {
+							fillText(result);
+			            },
+			            //请求失败，包含具体的错误信息
+			            error : function(e){
+			                console.log(e.status);
+			                console.log(e.responseText);
+			            }
+						
+					});
+					
+			  });
+				
+				$(".delete").click(function(){
+					if(confirm("真的要删除吗?")){
+						var colId=$(this).attr("value");
+						$("#form_del").attr("action","list/"+colId).submit();
+					}
+					return false;	  
+				});
+				
+				
+				$(".save").click(function(){
+						var href=$(this).attr("href");
+						$("#roleForm").attr("action",href).submit();
+				});
+		});
+		
+		function fillText(result){
+			for(var key in result.roleEnitiy){
+				$("#"+key).val
+				console.log(key);
+			}
+		}
+		
+		
 		function newUser(){
 			$('#dlg').dialog('open').dialog('setTitle','新建');
 			$('#fm').form('clear');

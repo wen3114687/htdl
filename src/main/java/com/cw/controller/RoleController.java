@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.cw.bean.Role;
 import com.cw.service.RoleService;
@@ -28,10 +29,11 @@ public class RoleController {
 		return "roleManage/list";
 	}
 	
-	@RequestMapping(value="/list/{id}",method = RequestMethod.GET)
+	@RequestMapping(value="/edit/{id}",method = RequestMethod.GET,produces = "application/json;charset=UTF-8")
+	@ResponseBody
 	public ModelAndView findById(@PathVariable Integer id,Map<String, Object> map) {
 		map.put("roleEnitiy", roleService.getRoleById(id));
-		return new ModelAndView("roleManage/list");
+		return new ModelAndView(new MappingJackson2JsonView(), map);
 	}
 	
 	
