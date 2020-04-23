@@ -5,8 +5,10 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cw.bean.Role;
 import com.cw.bean.User;
 import com.cw.service.UserService;
 
@@ -25,10 +27,16 @@ public class UserController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/login")
-	public ModelAndView  login(@ModelAttribute User user) {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("system/main");
-		return modelAndView;
+	//增加
+	@RequestMapping(value = "/list", method = RequestMethod.POST , produces = "application/json;charset=UTF-8")
+	public ModelAndView addUser(@ModelAttribute User user) {
+		userService.save(user);
+		return new ModelAndView("redirect:/userManage/lists");
 	}
+	
+	//删除
+	//修改
+	//查询
+	
+
 }

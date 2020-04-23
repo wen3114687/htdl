@@ -1,5 +1,7 @@
 package com.cw.service.imp;
 
+import java.util.Collection;
+
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
@@ -19,6 +21,41 @@ public class DeptServiceImp implements DeptService {
 	public void save(Department department) {
 		deptDao.save(department);
 		
+	}
+
+
+	@Override
+	public void delete(Integer id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public Department getDepById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public void update(Department department) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public Collection<Department> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Collection<Department> getTopDepts() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 
