@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -35,6 +36,12 @@ public class UserController {
 	}
 	
 	//删除
+	@RequestMapping(value = "/list/{id}", method = RequestMethod.DELETE)
+	public ModelAndView deleteUser(@PathVariable Integer id) {
+		userService.delete(id);
+		return new ModelAndView("redirect:/roleManage/lists");
+	}
+	
 	//修改
 	//查询
 	

@@ -12,7 +12,7 @@ public class DeptDaoImp extends BaseDaoImp<Department> implements DeptDao{
 	
 	@Override
 	public List<Department> findTopDepts() {
-		String sql="";
+		String sql="select * from orgmodel_dep where ";
 		return getSession().createQuery(sql).list();
 	}
 

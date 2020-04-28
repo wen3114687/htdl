@@ -15,13 +15,13 @@ public class Function {
 	
 	@Id
 	@GeneratedValue
-	private String id;
+	private Integer id;
 	
 	@Column(name = "name")
 	private String name;
 	
 	@Column(name = "parentid")
-	private String parentid;
+	private Integer parentid;
 	
 	@Column(name = "weight")
 	private String weight;
@@ -31,4 +31,23 @@ public class Function {
 	
 	@Column(name = "path")
 	private String path;
+	
+	
+
+	public Function(Integer id, String name, Integer parentid, String weight, String icon, String path) {
+		this.id = id;
+		this.name = name;
+		this.parentid = parentid;
+		this.weight = weight;
+		this.icon = icon;
+		this.path = path;
+	}
+
+
+
+	public Function() {
+	}
+	
+	
+	
 }
