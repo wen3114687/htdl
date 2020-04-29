@@ -1,4 +1,4 @@
-package com.cw.bean;
+package com.cw.bean.tree;
 
 import java.util.List;
 

@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.cw.bean.Function;
-import com.cw.bean.TreeNode;
+import com.cw.bean.tree.TreeNode;
 import com.cw.service.FunctionService;
 import com.cw.utils.TreeUtils;
 
@@ -24,8 +24,9 @@ public class TreeTest {
 	public void TreeTestX() {
 		
 		FunctionService functionService=ioc.getBean(FunctionService.class);
-		Collection<Function> fulist=  functionService.getAll();
+		
 		List<TreeNode> treenodes=CollectionUtil.newArrayList();
+		Collection<Function> fulist=  functionService.getAll();
 		for (Function function : fulist) {
 			TreeNode td=new TreeNode();
 			td.setId(function.getId());

@@ -3,8 +3,7 @@ package com.cw.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import com.cw.bean.TreeNode;
+import com.cw.bean.tree.TreeNode;
 
 import cn.hutool.core.collection.CollectionUtil;
 
