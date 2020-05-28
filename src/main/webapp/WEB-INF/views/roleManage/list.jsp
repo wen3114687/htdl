@@ -6,10 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <jsp:include page="../common/common_js.jsp"></jsp:include>
-<script type="text/javascript">
-	
-
-</script>
 <title>list</title>
 </head>
 <body>

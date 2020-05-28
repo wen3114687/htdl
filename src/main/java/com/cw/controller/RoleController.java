@@ -25,24 +25,24 @@ public class RoleController {
 	@RequestMapping(value = "/list", method = RequestMethod.POST , produces = "application/json;charset=UTF-8")
 	public ModelAndView addRole(@ModelAttribute Role role) {
 		roleService.save(role);
-		return new ModelAndView("redirect:/roleManage/lists");
+		return new ModelAndView("redirect:/roleManage/list");
 	}
 
 	// 删除
 	@RequestMapping(value = "/list/{id}", method = RequestMethod.DELETE)
 	public ModelAndView deleteRole(@PathVariable Integer id) {
 		roleService.delete(id);
-		return new ModelAndView("redirect:/roleManage/lists");
+		return new ModelAndView("redirect:/roleManage/list");
 	}
 
 	// 更新
 	@RequestMapping(value = "/list/{id}", method = RequestMethod.PUT)
 	public ModelAndView updateRole(@ModelAttribute Role role,@PathVariable Integer id) {
 		roleService.update(role);
-		return new ModelAndView("redirect:/roleManage/lists");
+		return new ModelAndView("redirect:/roleManage/list");
 	}
 	//查询列表
-	@RequestMapping(value = "/lists", method = RequestMethod.GET)
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Map<String, Object> map) {
 		map.put("rolelist", roleService.getAll());
 		return "roleManage/list";

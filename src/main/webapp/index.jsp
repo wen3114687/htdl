@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<form action="userManage/login">
+	<form action="system/login" method="post">
 	<label accesskey="loginname">登录名：</label>
 		<input type="text" name="loginname"><br>
 		
@@ -18,8 +18,8 @@
 	</form>	
 
 
-	<a href="saveUser?name=admin">saveUser</a>
+	<a href="userManage/saveUser?name=admin">saveUser</a>
 	<a href="roleManage/list">roleManage</a>
-	<a href="hello">你好</a>
+	
 </body>
 </html>

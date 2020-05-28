@@ -32,14 +32,14 @@ public class UserController {
 	@RequestMapping(value = "/list", method = RequestMethod.POST , produces = "application/json;charset=UTF-8")
 	public ModelAndView addUser(@ModelAttribute User user) {
 		userService.save(user);
-		return new ModelAndView("redirect:/userManage/lists");
+		return new ModelAndView("redirect:/userManage/list");
 	}
 	
 	//删除
 	@RequestMapping(value = "/list/{id}", method = RequestMethod.DELETE)
 	public ModelAndView deleteUser(@PathVariable Integer id) {
 		userService.delete(id);
-		return new ModelAndView("redirect:/roleManage/lists");
+		return new ModelAndView("redirect:/userManage/list");
 	}
 	
 	//修改

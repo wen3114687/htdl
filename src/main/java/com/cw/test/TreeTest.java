@@ -2,16 +2,13 @@ package com.cw.test;
 
 import java.util.Collection;
 import java.util.List;
-
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import com.cw.bean.Function;
 import com.cw.bean.tree.TreeNode;
 import com.cw.service.FunctionService;
 import com.cw.utils.TreeUtils;
-
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.lang.Console;
 import cn.hutool.json.JSONUtil;
@@ -36,7 +33,7 @@ public class TreeTest {
 			td.setName(function.getName());
 			treenodes.add(td);
 		}
-		List<TreeNode> ls=   TreeUtils.build(treenodes, 0);
+		List<TreeNode> ls=   TreeUtils.build(treenodes, 1);
 		Console.log(JSONUtil.formatJsonStr(JSONUtil.toJsonStr(ls)));
 		
 	}
