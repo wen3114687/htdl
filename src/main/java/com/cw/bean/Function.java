@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import lombok.Data;
 
 @Data
@@ -14,14 +16,15 @@ import lombok.Data;
 public class Function {
 	
 	@Id
-	@GeneratedValue
-	private Integer id;
+	@GenericGenerator(name="idGenerator", strategy="uuid") //这个是hibernate的注解/生成32位UUID
+    @GeneratedValue(generator="idGenerator")
+	private String id;
 	
 	@Column(name = "name")
 	private String name;
 	
 	@Column(name = "parentid")
-	private Integer parentid;
+	private String parentid;
 	
 	@Column(name = "weight")
 	private String weight;
@@ -34,7 +37,7 @@ public class Function {
 	
 	
 
-	public Function(Integer id, String name, Integer parentid, String weight, String icon, String path) {
+	public Function(String id, String name, String parentid, String weight, String icon, String path) {
 		this.id = id;
 		this.name = name;
 		this.parentid = parentid;

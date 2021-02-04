@@ -6,10 +6,10 @@ import lombok.Data;
 
 @Data
 public class TreeNode {
-	private Integer id;
+	private String id;
 	private String name;
 	private String linkUrl;
 	private String icon;
-	private Integer parentId;
+	private String parentId;
 	private List<TreeNode> children;
 }

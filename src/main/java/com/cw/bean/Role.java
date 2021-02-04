@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import lombok.Data;
 @Data
 @Entity
@@ -13,8 +15,9 @@ import lombok.Data;
 public class Role {
 	
 	@Id
-	@GeneratedValue
-	private Integer id;
+	@GenericGenerator(name="idGenerator", strategy="uuid") //这个是hibernate的注解/生成32位UUID
+    @GeneratedValue(generator="idGenerator")
+	private String id;
 	
 	@Column(name = "rolename")
 	private String rolename;
