@@ -16,7 +16,7 @@ import lombok.Data;
 public class User {
 	
 	@Id
-	@GenericGenerator(name="idGenerator", strategy="uuid") //这个是hibernate的注解/生成32位UUID
+	@GenericGenerator(name="idGenerator", strategy="org.hibernate.id.UUIDGenerator") //这个是hibernate的注解/生成32位UUID
     @GeneratedValue(generator="idGenerator")
 	private String id;
 	
