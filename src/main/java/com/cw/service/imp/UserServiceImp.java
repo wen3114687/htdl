@@ -22,13 +22,13 @@ public class UserServiceImp implements UserService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(String id) {
 		userdao.delete(id);
 		
 	}
 
 	@Override
-	public User getUserById(Integer id) {
+	public User getUserById(String id) {
 		// TODO Auto-generated method stub
 		return userdao.findByid(id);
 	}

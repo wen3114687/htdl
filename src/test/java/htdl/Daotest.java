@@ -10,7 +10,7 @@ public class Daotest {
 	@Test
 	public void test() {
 		UserDao personDao=null;
-		User peson=personDao.findByid(1);
+		User peson=personDao.findByid("");
 		
 	}
 

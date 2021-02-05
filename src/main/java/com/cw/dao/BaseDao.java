@@ -10,11 +10,11 @@ public interface BaseDao <T>{
 
     void saveOrUpdate(T entity);
 
-    void delete(Integer id);
+    void delete(String id);
     
-    T findByid(Integer id);
+    T findByid(String id);
     
-    List<T> findByids(Integer[] ids);
+    List<T> findByids(String[] ids);
     
     List<T> findAll();
 

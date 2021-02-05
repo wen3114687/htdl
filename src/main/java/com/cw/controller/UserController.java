@@ -37,7 +37,7 @@ public class UserController {
 	
 	//删除
 	@RequestMapping(value = "/list/{id}", method = RequestMethod.DELETE)
-	public ModelAndView deleteUser(@PathVariable Integer id) {
+	public ModelAndView deleteUser(@PathVariable String id) {
 		userService.delete(id);
 		return new ModelAndView("redirect:/userManage/list");
 	}

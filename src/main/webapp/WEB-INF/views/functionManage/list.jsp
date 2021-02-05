@@ -17,33 +17,8 @@
 		<form id="form_update" action="" method="post">
 			<input type="hidden" name="_method" value="DELETE">
 		</form>
-		
 	
-		<table id="rolelist" toolbar="#toolbar" class="easyui-datagrid" title="角色" style="width:100%" pagination="true"
-            rownumbers="true" fitColumns="true" singleSelect="true">
-			<thead>
-				<tr>
-					<th data-options="field:'id',width:80">ID</th>
-					<th data-options="field:'rolename',width:100">ROLENAME</th>
-					<th data-options="field:'auth'">AUTH </th>
-					<th data-options="field:'description'">DESCRIPTION</th>
-					<th data-options="field:'null'">操作</th>
-				</tr>
-			</thead>
-			<tbody>
-			<c:forEach items="${rolelist}" var="role">
-				<tr>
-					<td>${role.id}</td>
-					<td>${role.rolename}</td>
-					<td>${role.auth}</td>
-					<td>${role.description}</td>
-					<%-- <td><a href="#" value="${role.id}" class="edit">编辑</a>&nbsp;<a class="delete" href="list/${role.id}">删除</a></td> --%>
-					<td><button value="${role.id}" class="edit">编辑</button>&nbsp;<button class="delete" value="${role.id}" >删除</button></td>
-				</tr>
-			
-			</c:forEach>
-			</tbody>
-		</table>
+		
 		  <div id="toolbar">
 		        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">新建角色</a>
 		  </div>

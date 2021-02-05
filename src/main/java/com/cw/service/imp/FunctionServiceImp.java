@@ -24,7 +24,7 @@ public class FunctionServiceImp implements FunctionService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(String id) {
 		functionDao.delete(id);
 
 	}
@@ -43,7 +43,7 @@ public class FunctionServiceImp implements FunctionService {
 	}
 
 	@Override
-	public Function getFunctionById(Integer id) {
+	public Function getFunctionById(String id) {
 		
 		return functionDao.findByid(id);
 	}

@@ -43,7 +43,7 @@ public abstract  class BaseDaoImp<T> implements BaseDao<T> {
 		
 	}
 
-	public void delete(Integer id) {
+	public void delete(String id) {
 		Object obj=getSession().get(clazz, id);
 		Session session=sessionFactory.openSession();
 	      session.beginTransaction();
@@ -55,7 +55,7 @@ public abstract  class BaseDaoImp<T> implements BaseDao<T> {
 	}
 
 	@Override
-	public T findByid(Integer id) {
+	public T findByid(String id) {
 		// TODO Auto-generated method stub
 		return (T) getSession().get(clazz, id);
 	}
@@ -76,7 +76,7 @@ public abstract  class BaseDaoImp<T> implements BaseDao<T> {
 	}
 
 	@Override
-	public List<T> findByids(Integer[] ids) {
+	public List<T> findByids(String[] ids) {
 		getSession().createCriteria(clazz).add(Restrictions.in("id", ids));
 		return null;
 	}

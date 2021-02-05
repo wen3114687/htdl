@@ -12,8 +12,8 @@
 	<url>http://www.example.com</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.7</maven.compiler.source>
-		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 		<spring.version>4.3.7.RELEASE</spring.version>
 		<hibernateVersion>4.3.5.Final</hibernateVersion>
 		<lombokVersion>1.16.10</lombokVersion>
@@ -35,7 +35,7 @@
 		<dependency>
 			<groupId>cn.hutool</groupId>
 			<artifactId>hutool-all</artifactId>
-			<version>5.3.2</version>
+			<version>5.5.8</version>
 		</dependency>
 
 

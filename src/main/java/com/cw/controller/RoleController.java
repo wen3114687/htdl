@@ -30,14 +30,14 @@ public class RoleController {
 
 	// 删除
 	@RequestMapping(value = "/list/{id}", method = RequestMethod.DELETE)
-	public ModelAndView deleteRole(@PathVariable Integer id) {
+	public ModelAndView deleteRole(@PathVariable String id) {
 		roleService.delete(id);
 		return new ModelAndView("redirect:/roleManage/list");
 	}
 
 	// 更新
 	@RequestMapping(value = "/list/{id}", method = RequestMethod.PUT)
-	public ModelAndView updateRole(@ModelAttribute Role role,@PathVariable Integer id) {
+	public ModelAndView updateRole(@ModelAttribute Role role,@PathVariable String id) {
 		roleService.update(role);
 		return new ModelAndView("redirect:/roleManage/list");
 	}
@@ -50,7 +50,7 @@ public class RoleController {
 	//通过ID查询
 	@RequestMapping(value = "/list/{id}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public ModelAndView findRoleById(@PathVariable("id") Integer id, Map<String, Object> map) {
+	public ModelAndView findRoleById(@PathVariable("id") String id, Map<String, Object> map) {
 		map.put("roleEnitiy", roleService.getRoleById(id));
 		return new ModelAndView(new MappingJackson2JsonView(), map);
 	}
