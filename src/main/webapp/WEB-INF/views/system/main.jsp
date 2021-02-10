@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <jsp:include page="../common/common_js.jsp"></jsp:include>
 <style type="text/css">
 .topBG {
@@ -38,56 +37,6 @@
 
 
 <script type="text/javascript">
-	var data1 = [ {
-		text : '系统管理',
-		iconCls : 'icon-sum',
-		state : 'open',
-		children : [ {
-			'text' : '系统配置',
-			'iconCls' : 'icon-sum',
-			'url' : '/functionManage/list'
-		}, {
-			text : '用户管理',
-			url : '/roleManage/list'
-		}, {
-			text : '角色管理',
-			url : '/roleManage/list'
-		}, {
-			text : '组织模型导入',
-			url : '/roleManage/list'
-		}, {
-			text : '系统统计',
-			url : '/roleManage/list'
-		}, {
-			text : '日志监控',
-			url : '/roleManage/list'
-		}, {
-			text : '数据字典',
-			children : [ {
-				text : 'Option31'
-			}, {
-				text : 'Option32'
-			} ]
-		} ]
-	}, {
-		text : '物资品管理',
-		iconCls : 'icon-more',
-		children : [ {
-			text : '入库登记',
-			url : '/roleManage/list'
-		}, {
-			text : '设备管理',
-			url : '/roleManage/list'
-		}, {
-			text : '仓库管理',
-			url : '/roleManage/list'
-		}, {
-			text : '进出库登记',
-			url : '/roleManage/list'
-		} ]
-	} ];
-	
-	
 
 	$(function() {
 		var data=${functionTree};
@@ -127,7 +76,7 @@
 			$('#tt').tabs('select', item.name);
 		} else {
 			var content = '<iframe scrolling="auto" frameborder="0"  src="/htdlgs'
-					+ item.name
+					+ item.url
 					+ '" style="width:'
 					+ ($(window).width() - 260) + 'px;height:'
 					+ $(window).height() * 0.8 + 'px;"></iframe>';

@@ -58,7 +58,7 @@
 	            </div>
 	            <div style="margin-bottom:10px">
 	                <label for="auth">auth:</label>
-	                <input id="emp" type="radio" name="auth" value="emp"/>职员
+	                <input id="auth" type="radio" name="auth" value="emp"/>职员
 	                <input id="manager"  type="radio" name="auth" value="manager"/>管理员
 	            </div>
 	            <div style="margin-bottom:10px">
